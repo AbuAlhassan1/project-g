@@ -2,8 +2,8 @@ from ninja import Schema
 from uuid import UUID
 
 class SigninSchema (Schema):
-    username: str
-    password: str
+    username: str = "admin"
+    password: str = "admin"
 
 class SigninSuccessful (Schema):
     id: UUID

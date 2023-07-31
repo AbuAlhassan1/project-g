@@ -21,6 +21,7 @@ class CUser(AbstractUser):
     full_name = models.CharField(max_length=100)
     age = models.IntegerField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
+    phone = models.IntegerField(blank=True, null=True)
 
     objects = CUserManager()
 
