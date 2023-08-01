@@ -1,0 +1,5 @@
+name: Pull Changes on Commit
+on:
+  push:
+    branches:
+      - main
