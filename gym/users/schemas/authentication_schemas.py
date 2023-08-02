@@ -6,7 +6,7 @@ class SigninSchema (Schema):
     password: str = "admin"
 
 class SigninSuccessful (Schema):
-    id: UUID
+    id: str
     role: str
     access_token: str
     refresh_token: str
