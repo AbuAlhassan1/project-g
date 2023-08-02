@@ -66,7 +66,7 @@ def signin(request, payload: SigninSchema):
     refresh_token = get_user_refresh_token(user)
     
     return 200, {
-        "id": user.id,
+        "id": str(user.id),
         "role": str(user),
         "access_token": str(token['access']),
         "refresh_token": str(refresh_token['refresh'])
