@@ -96,7 +96,7 @@ def get_new_token(request, refresh_token: str):
     user_refresh_token = get_user_refresh_token(user)
     
     return 200, {
-        "id": user.id,
+        "id": str(user.id),
         "role": "",
         "access_token": str(user_access_token['access']),
         "refresh_token": str(user_refresh_token['refresh'])
