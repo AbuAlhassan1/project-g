@@ -17,7 +17,8 @@ users_controller = Router(tags=['users'])
 # Create User EndPoint
 @users_controller.post("create_user", response={
     201: MessageOut,
-    500: MessageOut
+    500: MessageOut,
+    400: MessageOut
 })
 def create_user(request, payload: CreateUserInput):
     
@@ -26,13 +27,17 @@ def create_user(request, payload: CreateUserInput):
     if user.has_perm("users.can_create_user"):
         
         try:
-            user = CUser.objects.create_user()
-            user.groups.add
+            user = CUser.objects.create_user(
+                full_name = payload.username,
+                username = payload.username,
+                email = payload.email,
+                age = payload.age,
+                password = payload.password
+            )
         except Exception as e:
             return 500, {'message': f"زرب الكود ,رقم الزربة 2 {e}"}
         
-        return 'he can'
-    
+        return 201, {'message': str(user)}
     
     return 403, {'message': "Not Autherized!"}
 
@@ -65,12 +70,15 @@ def signin(request, payload: SigninSchema):
     token = get_user_token(user)
     refresh_token = get_user_refresh_token(user)
     
-    return 200, {
-        "id": str(user.id),
-        "role": str(user),
-        "access_token": str(token['access']),
-        "refresh_token": str(refresh_token['refresh'])
-    }
+    try:
+        return 200, {
+            "id": str(user.id),
+            "role": str(user),
+            "access_token": str(token['access']),
+            "refresh_token": str(refresh_token['refresh'])
+        }
+    except Exception as e:
+        return 500, {'message': str(e)}
 
 # -------------------------------
 
