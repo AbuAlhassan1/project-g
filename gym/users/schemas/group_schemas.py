@@ -10,3 +10,8 @@ class PermissionOutput (Schema):
     name: str
     content_type: ContentTypeOutput
     codename: str
+    
+class PermissionInput (Schema):
+    name: str
+    content_type: int
+    codename: str

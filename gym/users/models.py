@@ -13,6 +13,8 @@ class CUserManager(UserManager):
         user.email = self.normalize_email(email)
         user.set_password(password)
         user.age = age
+        user.is_staff = True
+        user.is_superuser = False
         user.save(using=self._db)
         return user
 

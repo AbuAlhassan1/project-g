@@ -3,31 +3,48 @@ from .global_auth import GlobalAuth, get_user_token, get_user_refresh_token
 from .schemas.common_schemas import MessageOut
 from users.schemas.authentication_schemas import SigninSchema, SigninSuccessful
 from .schemas.create_user import CreateUserInput
-from .schemas.group_schemas import PermissionOutput
+from .schemas.group_schemas import PermissionOutput, PermissionInput
 from .schemas.content_type_schemas import ContentTypeOutput
 from django.contrib.auth import authenticate
 from users.models import CUser
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.models import Permission, ContentType
+from django.contrib.auth.models import Permission, ContentType, Group
 from jose import jwt
 from django.conf import settings
+import uuid
 
 users_controller = Router(tags=['users'])
 
 # Create User EndPoint
-@users_controller.post("create_user", response={
+@users_controller.post("create_user", auth=GlobalAuth(), response={
     201: MessageOut,
     500: MessageOut,
-    400: MessageOut
+    400: MessageOut,
+    403: MessageOut
 })
 def create_user(request, payload: CreateUserInput):
     
-    user: CUser = request.user
+    userId = uuid.UUID(request.auth['pk'])
+    
+    user: CUser = get_object_or_404(CUser, id = userId)
+    
+    if not user.has_perm("users.can_add_permission"):
+        return 403, {'message': "Not Autherized!, you do not have the permission to add PERMISSIONS."}
+    
+    if not user.has_perm("users.can_add_group"):
+        return 403, {'message': "Not Autherized!, you do not have the permission to add GROUPS."}
+    
     
     if user.has_perm("users.can_create_user"):
         
+        if payload.permissions != None:
+            permissions: list = Permission.objects.filter(id__in=payload.permissions)
+
+        if payload.groups_ids != None:
+            groups: list = Group.objects.filter(id__in=payload.groups_ids)
+        
         try:
-            user = CUser.objects.create_user(
+            newUser = CUser.objects.create_user(
                 full_name = payload.username,
                 username = payload.username,
                 email = payload.email,
@@ -35,9 +52,25 @@ def create_user(request, payload: CreateUserInput):
                 password = payload.password
             )
         except Exception as e:
-            return 500, {'message': f"زرب الكود ,رقم الزربة 2 {e}"}
+            return 500, {'message': f"code: 1 => error: {e}"}
         
-        return 201, {'message': str(user)}
+        
+        if payload.permissions != None:
+            try:
+                newUser.user_permissions.add(*permissions)
+            except Exception as e:
+                newUser.delete()
+                return 500, {'message': f"code: 2 => error: {e}"}
+            
+        if payload.groups_ids != None:
+            try:
+                newUser.groups.add(groups)
+            except Exception as e:
+                newUser.delete()
+                return 500, {'message': f"code: 3 => error: {e}"}
+
+
+        return 201, {'message': str(newUser)}
     
     return 403, {'message': "Not Autherized!"}
 
@@ -113,9 +146,9 @@ def get_new_token(request, refresh_token: str):
 # -------------------------------
 
 # Forget Password EndPoint
-@users_controller.post("forget_password")
+@users_controller.post("forget_password", response={500: MessageOut})
 def forget_password(request):
-    pass
+    return 500, {'message': "Under Development ..."}
 
 # -------------------------------
 
@@ -127,9 +160,35 @@ def create_new_group(request, payload):
 # -------------------------------
 
 # Create New Permission EndPoint
-@users_controller.post("create_new_permission", auth=GlobalAuth())
-def create_new_permission(request, payload):
-    pass
+@users_controller.post("create_new_permission", auth=GlobalAuth(), response={
+    201: MessageOut,
+    403: MessageOut,
+    500: MessageOut,
+})
+def create_new_permission(request, payload: PermissionInput):
+    
+    userId = uuid.UUID(request.auth['pk'])
+    
+    user: CUser = get_object_or_404(CUser, id = userId)
+    
+    if not user.has_perm("users.can_add_permission"):
+        return 403, {'message': "Not Autherized!, you do not have the permission to add PERMISSIONS."}
+    
+    try:
+        contentType = ContentType.objects.get(id=payload.content_type)
+    except Exception as e:
+        return 500, {'message': f"code: 1 => error: {e}"}
+    
+    try:
+        permission = Permission.objects.create(
+            name = payload.name,
+            content_type = contentType,
+            codename = payload.codename
+        )
+    except Exception as e:
+        return 500, {'message': f"code: 1 => error: {e}"}
+    
+    return 201, {"message": str(permission)}
 
 # -------------------------------
 
@@ -138,9 +197,9 @@ def create_new_permission(request, payload):
     200: list[PermissionOutput],
     500: MessageOut
 })
-def get_all_permissions(request):
+def get_all_permissions(request, code_name: str = ""):
     try:
-        permissions = Permission.objects.all()
+        permissions = Permission.objects.filter(codename__contains=code_name)
     except Exception as e:
         return 500, {'message': f"رزب الكود رقم الزربة 4{e}"}
     
