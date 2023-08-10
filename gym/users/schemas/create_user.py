@@ -7,5 +7,5 @@ class CreateUserInput (Schema):
     email: str = None
     password: str
     phone: str
-    groups_ids: list = None
-    permissions: list = None
+    groups_ids: list[int] = None
+    permissions: list[int] = None

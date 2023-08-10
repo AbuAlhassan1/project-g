@@ -1,14 +1,11 @@
 from ninja import Router
 from .global_auth import GlobalAuth, get_user_token, get_user_refresh_token
-from .schemas.common_schemas import MessageOut
-from users.schemas.authentication_schemas import SigninSchema, SigninSuccessful
+from utils.common_schemas import MessageOut
 from .schemas.create_user import CreateUserInput
-from .schemas.group_schemas import PermissionOutput, PermissionInput
-from .schemas.content_type_schemas import ContentTypeOutput
 from django.contrib.auth import authenticate
 from users.models import CUser
+from users.schemas.authentication_schemas import SigninSuccessful, SigninSchema
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.models import Permission, ContentType, Group
 from jose import jwt
 from django.conf import settings
 import uuid
@@ -149,73 +146,3 @@ def get_new_token(request, refresh_token: str):
 @users_controller.post("forget_password", response={500: MessageOut})
 def forget_password(request):
     return 500, {'message': "Under Development ..."}
-
-# -------------------------------
-
-# Create New Group EndPoint
-@users_controller.post("create_new_group", auth=GlobalAuth())
-def create_new_group(request, payload):
-    pass
-
-# -------------------------------
-
-# Create New Permission EndPoint
-@users_controller.post("create_new_permission", auth=GlobalAuth(), response={
-    201: MessageOut,
-    403: MessageOut,
-    500: MessageOut,
-})
-def create_new_permission(request, payload: PermissionInput):
-    
-    userId = uuid.UUID(request.auth['pk'])
-    
-    user: CUser = get_object_or_404(CUser, id = userId)
-    
-    if not user.has_perm("users.can_add_permission"):
-        return 403, {'message': "Not Autherized!, you do not have the permission to add PERMISSIONS."}
-    
-    try:
-        contentType = ContentType.objects.get(id=payload.content_type)
-    except Exception as e:
-        return 500, {'message': f"code: 1 => error: {e}"}
-    
-    try:
-        permission = Permission.objects.create(
-            name = payload.name,
-            content_type = contentType,
-            codename = payload.codename
-        )
-    except Exception as e:
-        return 500, {'message': f"code: 1 => error: {e}"}
-    
-    return 201, {"message": str(permission)}
-
-# -------------------------------
-
-# Get All Permissions EndPoint
-@users_controller.get("get_all_permissions", response={
-    200: list[PermissionOutput],
-    500: MessageOut
-})
-def get_all_permissions(request, code_name: str = ""):
-    try:
-        permissions = Permission.objects.filter(codename__contains=code_name)
-    except Exception as e:
-        return 500, {'message': f"رزب الكود رقم الزربة 4{e}"}
-    
-    return 200, permissions
-
-# -------------------------------
-
-# Get Content Type EndPoint
-@users_controller.get("get_content_type", auth=GlobalAuth(), response={
-    200: list[ContentTypeOutput],
-    500: MessageOut
-})
-def get_content_type(request):
-    try:
-        content_types = ContentType.objects.all()
-        return 200, content_types
-    except Exception as e:
-        return 500, {'message': f"زرب الكود رقم الزربة 3 {e}"}
-    pass

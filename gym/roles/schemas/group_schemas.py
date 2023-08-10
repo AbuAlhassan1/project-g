@@ -3,7 +3,7 @@ from .content_type_schemas import ContentTypeOutput
 
 class GroupInput (Schema):
     name: str
-    permissions: list
+    permissions: list[int] = None
     
 class PermissionOutput (Schema):
     id: int

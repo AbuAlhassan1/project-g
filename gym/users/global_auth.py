@@ -19,7 +19,7 @@ class GlobalAuth(HttpBearer):
 
 def get_user_token(user):
     
-    expiration_time = datetime.utcnow() + timedelta(hours=12)
+    expiration_time = datetime.utcnow() + timedelta(minutes=1)
     
     token = jwt.encode(
         {
