@@ -1,7 +1,7 @@
 from ninja import Router
 from .global_auth import GlobalAuth, get_user_token, get_user_refresh_token
 from utils.common_schemas import MessageOut
-from .schemas.create_user import CreateUserInput
+from .schemas.create_user import CreateUserInput, UserOutput
 from django.contrib.auth import authenticate
 from users.models import CUser
 from users.schemas.authentication_schemas import SigninSuccessful, SigninSchema
@@ -146,3 +146,17 @@ def get_new_token(request, refresh_token: str):
 @users_controller.post("forget_password", response={500: MessageOut})
 def forget_password(request):
     return 500, {'message': "Under Development ..."}
+
+# -------------------------------
+
+# Get Users [ With Filter ] EndPoint
+@users_controller.get('get_users', auth=GlobalAuth(), response={
+    200: list[UserOutput],
+    400: MessageOut,
+    401: MessageOut,
+    403: MessageOut,
+    404: MessageOut,
+    500: MessageOut
+})
+def get_users(request, filter: str):
+    pass

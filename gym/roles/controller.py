@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from ninja import Router
 from users.global_auth import GlobalAuth, get_user_token, get_user_refresh_token
 from django.contrib.auth.models import Permission, ContentType, Group
 from utils.common_schemas import MessageOut
-from roles.schemas.group_schemas import PermissionOutput, PermissionInput, GroupInput
+from roles.schemas.group_schemas import PermissionOutput, PermissionInput, GroupInput, GroupOutput
 from roles.schemas.content_type_schemas import ContentTypeOutput
+import uuid
+from users.models import CUser
 
 roles_controller = Router(tags=['roles'])
 
@@ -16,6 +18,7 @@ roles_controller = Router(tags=['roles'])
     500: MessageOut
 })
 def create_new_group(request, payload: GroupInput):
+    # print(request.headers['Authorization'].split(' ')[1])
     userId = uuid.UUID(request.auth['pk'])
     
     user: CUser = get_object_or_404(CUser, id = userId)
@@ -36,7 +39,22 @@ def create_new_group(request, payload: GroupInput):
         group.permissions = permissions
         group.save()
     
-    return 201, {"message": f"group name:{group}"}
+    return 201, {"message": f"group name: {group}"}
+
+# -------------------------------
+
+# Get All Groups EndPoint
+@roles_controller.get("get_all_groups", auth=GlobalAuth(), response={
+    200: list[GroupOutput],
+    500: MessageOut
+})
+def get_all_groups(request, name: str = ""):
+    try:
+        groups = Group.objects.filter(name__contains=name)
+    except Exception as e:
+        return 500, {'message': f"رزب الكود رقم الزربة 4{e}"}
+    
+    return 200, groups.all()
 
 # -------------------------------
 

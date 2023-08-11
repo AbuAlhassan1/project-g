@@ -9,3 +9,11 @@ class CreateUserInput (Schema):
     phone: str
     groups_ids: list[int] = None
     permissions: list[int] = None
+    
+class UserOutput (Schema):
+    id: str
+    full_name: str
+    username: str
+    email: str
+    phone: int
+    
