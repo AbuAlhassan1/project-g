@@ -7,6 +7,7 @@ from roles.schemas.group_schemas import PermissionOutput, PermissionInput, Group
 from roles.schemas.content_type_schemas import ContentTypeOutput
 import uuid
 from users.models import CUser
+from datetime import datetime, timedelta
 
 roles_controller = Router(tags=['roles'])
 
@@ -61,12 +62,14 @@ def get_all_groups(request, name: str = ""):
 # Create New Permission EndPoint
 @roles_controller.post("create_new_permission", auth=GlobalAuth(), response={
     201: MessageOut,
+    401: MessageOut,
     403: MessageOut,
     500: MessageOut,
 })
 def create_new_permission(request, payload: PermissionInput):
     
-    userId = uuid.UUID(request.auth['pk'])
+    try: userId = uuid.UUID( request.auth.get('pk') )
+    except Exception as e: return 401, {'message': "Unautherized"}
     
     user: CUser = get_object_or_404(CUser, id = userId)
     

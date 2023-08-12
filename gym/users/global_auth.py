@@ -8,24 +8,19 @@ class GlobalAuth(HttpBearer):
         try:
             user_pk = jwt.decode(token=token, key=settings.SECRET_KEY, algorithms=['HS256'])
         except JWTError as e:
-            print(str(e))
-            return {
-                'token': 'unauthorized',
-            }
+            return { 'token': 'unauthorized' }
         
         if user_pk:
-            return {
-                'pk': str(user_pk['pk'])
-            }
+            return { 'pk': str(user_pk['pk']) }
 
 def get_user_token(user):
     
-    expiration_time = datetime.utcnow() + timedelta(minutes=1)
+    expiration_time = datetime.utcnow() + timedelta(days=10)
     
     token = jwt.encode(
         {
             'pk': str(user.pk),
-            'exp': expiration_time.timestamp()
+            'exp': int(expiration_time.timestamp())
         },
         key=settings.SECRET_KEY,
         algorithm='HS256'
@@ -41,7 +36,7 @@ def get_user_refresh_token(user):
     token = jwt.encode(
         {
             'pk': str(user.pk),
-            'exp': expiration_time.timestamp()
+            'exp': int(expiration_time.timestamp())
         },
         key=settings.SECRET_KEY,
         algorithm='HS256'

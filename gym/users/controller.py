@@ -15,13 +15,15 @@ users_controller = Router(tags=['users'])
 # Create User EndPoint
 @users_controller.post("create_user", auth=GlobalAuth(), response={
     201: MessageOut,
-    500: MessageOut,
     400: MessageOut,
-    403: MessageOut
+    401: MessageOut,
+    403: MessageOut,
+    500: MessageOut,
 })
 def create_user(request, payload: CreateUserInput):
     
-    userId = uuid.UUID(request.auth['pk'])
+    try: userId = uuid.UUID(request.auth['pk'])
+    except Exception as e: return 401, {'message': str(e)}
     
     user: CUser = get_object_or_404(CUser, id = userId)
     
