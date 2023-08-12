@@ -4,6 +4,9 @@ from uuid import UUID
 class SigninSchema (Schema):
     username: str = "admin"
     password: str = "admin"
+    
+class GetNewTokenInput (Schema):
+    token: str = "admin"
 
 class SigninSuccessful (Schema):
     id: str

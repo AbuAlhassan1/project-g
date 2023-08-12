@@ -4,7 +4,7 @@ from utils.common_schemas import MessageOut
 from .schemas.create_user import CreateUserInput, UserOutput
 from django.contrib.auth import authenticate
 from users.models import CUser
-from users.schemas.authentication_schemas import SigninSuccessful, SigninSchema
+from users.schemas.authentication_schemas import SigninSuccessful, SigninSchema, GetNewTokenInput
 from django.shortcuts import get_object_or_404
 from jose import jwt
 from django.conf import settings
@@ -120,7 +120,7 @@ def signin(request, payload: SigninSchema):
     500: MessageOut,
     403: MessageOut
 })
-def get_new_token(request, refresh_token: str):
+def get_new_token(request, refresh_token: GetNewTokenInput):
     
     try:
         tokent_info = jwt.decode(refresh_token, key=settings.SECRET_KEY, algorithms=['HS256'])
