@@ -123,7 +123,7 @@ def signin(request, payload: SigninSchema):
 def get_new_token(request, refresh_token: GetNewTokenInput):
     
     try:
-        tokent_info = jwt.decode(refresh_token, key=settings.SECRET_KEY, algorithms=['HS256'])
+        tokent_info = jwt.decode(refresh_token.token, key=settings.SECRET_KEY, algorithms=['HS256'])
     except Exception as e:
         return 403, {'message': str(e)}
     

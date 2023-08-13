@@ -19,7 +19,10 @@ roles_controller = Router(tags=['roles'])
     500: MessageOut
 })
 def create_new_group(request, payload: GroupInput):
-    # print(request.headers['Authorization'].split(' ')[1])
+    
+    try: request.auth['pk']
+    except Exception as e: return 401, {'message': "Unauthorized"}
+    
     userId = uuid.UUID(request.auth['pk'])
     
     user: CUser = get_object_or_404(CUser, id = userId)
@@ -47,9 +50,13 @@ def create_new_group(request, payload: GroupInput):
 # Get All Groups EndPoint
 @roles_controller.get("get_all_groups", auth=GlobalAuth(), response={
     200: list[GroupOutput],
+    401: MessageOut,
     500: MessageOut
 })
 def get_all_groups(request, name: str = ""):
+    try: request.auth['pk']
+    except Exception as e: return 401, {'message': "Unauthorized"}
+    
     try:
         groups = Group.objects.filter(name__contains=name)
     except Exception as e:
@@ -100,6 +107,10 @@ def create_new_permission(request, payload: PermissionInput):
     500: MessageOut
 })
 def get_all_permissions(request, code_name: str = ""):
+    
+    try: request.auth['pk']
+    except Exception as e: return 401, {'message': "Unauthorized"}
+    
     try:
         permissions = Permission.objects.filter(codename__contains=code_name)
     except Exception as e:
@@ -115,6 +126,10 @@ def get_all_permissions(request, code_name: str = ""):
     500: MessageOut
 })
 def get_content_type(request):
+    
+    try: request.auth['pk']
+    except Exception as e: return 401, {'message': "Unauthorized"}
+    
     try:
         content_types = ContentType.objects.all()
         return 200, content_types
