@@ -104,6 +104,7 @@ def create_new_permission(request, payload: PermissionInput):
 # Get All Permissions EndPoint
 @roles_controller.get("get_all_permissions", response={
     200: list[PermissionOutput],
+    401: MessageOut,
     500: MessageOut
 })
 def get_all_permissions(request, code_name: str = ""):
@@ -123,6 +124,7 @@ def get_all_permissions(request, code_name: str = ""):
 # Get Content Type EndPoint
 @roles_controller.get("get_content_type", auth=GlobalAuth(), response={
     200: list[ContentTypeOutput],
+    401: MessageOut,
     500: MessageOut
 })
 def get_content_type(request):
