@@ -12,6 +12,7 @@ class PermissionOutput (Schema):
     codename: str
 
 class GroupOutput (Schema):
+    id: int
     name: str
     permissions: list[PermissionOutput] = None
 
