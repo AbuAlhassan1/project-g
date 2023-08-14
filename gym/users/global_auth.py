@@ -32,7 +32,6 @@ def get_user_token(user):
 def get_user_refresh_token(user):
     
     expiration_time = datetime.utcnow() + timedelta(days=4)
-    
     token = jwt.encode(
         {
             'pk': str(user.pk),
