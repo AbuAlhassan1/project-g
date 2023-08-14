@@ -38,10 +38,12 @@ def create_user(request, payload: CreateUserInput):
     if user.has_perm("users.can_create_user"):
         
         if payload.permissions != None:
-            permissions: list = Permission.objects.filter(id__in=payload.permissions)
+            try: permissions: list = Permission.objects.filter(id__in=payload.permissions)
+            except Exception as e: return 500, {"message": f"code: 1, error: {str(e)}"}
 
         if payload.groups_ids != None:
-            groups: list = Group.objects.filter(id__in=payload.groups_ids)
+            try: groups: list = Group.objects.filter(id__in=payload.groups_ids)
+            except Exception as e: return 500, {"message": f"code: 2, error: {str(e)}"}
         
         try:
             newUser = CUser.objects.create_user(
@@ -51,23 +53,20 @@ def create_user(request, payload: CreateUserInput):
                 age = payload.age,
                 password = payload.password
             )
-        except Exception as e:
-            return 500, {'message': f"code: 1 => error: {e}"}
+        except Exception as e: return 500, {'message': f"code: 3 => error: {e}"}
         
         
         if payload.permissions != None:
-            try:
-                newUser.user_permissions.add(*permissions)
+            try: newUser.user_permissions.add(*permissions)
             except Exception as e:
                 newUser.delete()
-                return 500, {'message': f"code: 2 => error: {e}"}
+                return 500, {'message': f"code: 4 => error: {e}"}
             
         if payload.groups_ids != None:
-            try:
-                newUser.groups.add(groups)
+            try: newUser.groups.add(groups)
             except Exception as e:
                 newUser.delete()
-                return 500, {'message': f"code: 3 => error: {e}"}
+                return 500, {'message': f"code: 5 => error: {e}"}
 
 
         return 201, {'message': str(newUser)}
