@@ -31,13 +31,13 @@ def create_new_group(request, payload: GroupInput):
         return 403, {'message': "Not Autherized!, you do not have the permission to add GROUP."}
     
     if payload.permissions != None:
-        permissions: list[Permission] = Permission.objects.filter(id__in=payload.permissions)
-
+        try: permissions: list[Permission] = Permission.objects.filter(id__in=payload.permissions)
+        except Exception as e: return 500, {"message": f"code: 1, error: {str(e)}"}
 
     try:
         group = Group.objects.create(name = payload.name)
     except Exception as e:
-        return 500, {'message': f"code: 1 => error: {e}"}
+        return 500, {'message': f"code: 2 => error: {e}"}
     
     if payload.permissions != None:
         group.permissions = permissions
