@@ -102,7 +102,7 @@ def create_new_permission(request, payload: PermissionInput):
 # -------------------------------
 
 # Get All Permissions EndPoint
-@roles_controller.get("get_all_permissions", response={
+@roles_controller.get("get_all_permissions", auth= GlobalAuth(), response={
     200: list[PermissionOutput],
     401: MessageOut,
     500: MessageOut
