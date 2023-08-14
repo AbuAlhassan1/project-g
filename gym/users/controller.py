@@ -3,6 +3,7 @@ from .global_auth import GlobalAuth, get_user_token, get_user_refresh_token
 from utils.common_schemas import MessageOut
 from .schemas.create_user import CreateUserInput, UserOutput
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import Permission, Group
 from users.models import CUser
 from users.schemas.authentication_schemas import SigninSuccessful, SigninSchema, GetNewTokenInput
 from django.shortcuts import get_object_or_404
@@ -63,7 +64,7 @@ def create_user(request, payload: CreateUserInput):
                 return 500, {'message': f"code: 4 => error: {e}"}
             
         if payload.groups_ids != None:
-            try: newUser.groups.add(groups)
+            try: newUser.groups.add(*groups)
             except Exception as e:
                 newUser.delete()
                 return 500, {'message': f"code: 5 => error: {e}"}
