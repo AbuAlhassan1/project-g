@@ -6,7 +6,7 @@ class SigninSchema (Schema):
     password: str = "admin"
     
 class GetNewTokenInput (Schema):
-    token: str = "admin"
+    token: str
 
 class SigninSuccessful (Schema):
     id: str

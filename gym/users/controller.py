@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 from jose import jwt
 from django.conf import settings
 import uuid
+from jose import jwt, JWTError
 
 users_controller = Router(tags=['users'])
 
@@ -117,20 +118,20 @@ def signin(request, payload: SigninSchema):
 # Get New Token EndPoint
 @users_controller.post("get_new_token", response={
     200: SigninSuccessful,
+    400: MessageOut,
+    401: MessageOut,
+    403: MessageOut,
+    422: MessageOut,
     500: MessageOut,
-    403: MessageOut
 })
 def get_new_token(request, refresh_token: GetNewTokenInput):
     
-    try:
-        tokent_info = jwt.decode(refresh_token.token, key=settings.SECRET_KEY, algorithms=['HS256'])
-    except Exception as e:
-        return 403, {'message': str(e)}
+    if not refresh_token.token : return 422, {'message': "Token is required!"}
     
-    try:
-        user = request.user
-    except Exception as e:
-        return 500, {'message': f"{e}"}
+    try: user_pk = jwt.decode(token=refresh_token.token, key=settings.SECRET_KEY, algorithms=['HS256'])
+    except JWTError as e: return 401, { 'message': 'Unauthorized' }
+    
+    user: CUser = get_object_or_404(CUser, id = user_pk['pk'])
     
     user_access_token = get_user_token(user)
     user_refresh_token = get_user_refresh_token(user)
