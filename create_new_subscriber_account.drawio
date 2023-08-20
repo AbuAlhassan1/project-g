@@ -1,0 +1,87 @@
+<mxfile host="Electron" modified="2023-08-20T01:59:57.387Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="07LOvLBWQp0tsaiie1VO" version="21.6.8" type="device">
+  <diagram name="Page-1" id="G6GLxSkHtD0HaxIlxIWw">
+    <mxGraphModel dx="1595" dy="1137" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1500" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="P0CJsbwuXqf5OvadXM2K-1" target="P0CJsbwuXqf5OvadXM2K-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-1" value="In The Gym Management System Dashboard After The Gym Staff User With The Proper Role Has Signed In" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="P0CJsbwuXqf5OvadXM2K-2" target="P0CJsbwuXqf5OvadXM2K-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-2" value="Show A &quot;Add New Subscriber&quot; Button" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="95" y="70" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="P0CJsbwuXqf5OvadXM2K-4" target="P0CJsbwuXqf5OvadXM2K-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-4" value="When The Button is Pressed Show The Corresponding Form, To Add The Subscriber Information Along With The Authentication Method" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="7.5" y="133" width="385" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="P0CJsbwuXqf5OvadXM2K-6" target="P0CJsbwuXqf5OvadXM2K-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-10" value="Valid" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="P0CJsbwuXqf5OvadXM2K-9" vertex="1" connectable="0">
+          <mxGeometry x="-0.028" y="1" relative="1" as="geometry">
+            <mxPoint x="-30" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="P0CJsbwuXqf5OvadXM2K-6" target="P0CJsbwuXqf5OvadXM2K-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-13" value="Not Valid" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="P0CJsbwuXqf5OvadXM2K-12" vertex="1" connectable="0">
+          <mxGeometry x="-0.0919" relative="1" as="geometry">
+            <mxPoint x="33" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-6" value="After All The Information&lt;br&gt;Has Been Entered Down&lt;br&gt;And The Form Is Valid" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="65" y="204.5" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="P0CJsbwuXqf5OvadXM2K-8" target="P0CJsbwuXqf5OvadXM2K-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-8" value="Try To Create A New Subscriber Account" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="350" y="320" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-11" value="Show The Validation Error Message" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="-160" y="320" width="210" height="24.5" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="P0CJsbwuXqf5OvadXM2K-14" target="P0CJsbwuXqf5OvadXM2K-16" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-18" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="P0CJsbwuXqf5OvadXM2K-17" vertex="1" connectable="0">
+          <mxGeometry x="-0.1147" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="P0CJsbwuXqf5OvadXM2K-14" target="P0CJsbwuXqf5OvadXM2K-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-21" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="P0CJsbwuXqf5OvadXM2K-20" vertex="1" connectable="0">
+          <mxGeometry x="-0.2732" y="-2" relative="1" as="geometry">
+            <mxPoint x="6" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-14" value="Is The Creation&lt;br&gt;Done Successfully?" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="405" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-16" value="Navigate The User To The Proper Page" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="590" y="500" width="230" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-19" value="Show The Error Message" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="170" y="500" width="155" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="P0CJsbwuXqf5OvadXM2K-22" value="In The Gym Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a0522d;fontColor=#ffffff;strokeColor=#6D1F00;arcSize=50;" parent="1" vertex="1">
+          <mxGeometry x="-120" y="-120" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="W_ChEYT8_34lSeYZV3qU-1" value="&lt;font color=&quot;#ffffff&quot;&gt;Create New Subscriber&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="-80" width="160" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

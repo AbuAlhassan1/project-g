@@ -1,0 +1,122 @@
+<mxfile host="Electron" modified="2023-08-19T22:11:26.667Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="gIlBe0AggblZlsMF_RdV" version="21.6.5" type="device">
+  <diagram name="Page-1" id="Wfc9iDtOJ40lFBxWYVN1">
+    <mxGraphModel dx="2087" dy="1080" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1500" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-2" target="J2T7ZsKiyUCOiQZrp5Lv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-2" value="Create New Gym" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="160" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-6" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="J2T7ZsKiyUCOiQZrp5Lv-5">
+          <mxGeometry x="-0.336" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-3" target="J2T7ZsKiyUCOiQZrp5Lv-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-8" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="J2T7ZsKiyUCOiQZrp5Lv-7">
+          <mxGeometry x="-0.3307" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-3" value="Is The User Signed In?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="320" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-9" target="J2T7ZsKiyUCOiQZrp5Lv-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-9" value="Show &quot;Create An Account As A Gym Owner&quot; Button" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="440" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-10" target="J2T7ZsKiyUCOiQZrp5Lv-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-10" value="The Button Pressed" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="510" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-12" target="J2T7ZsKiyUCOiQZrp5Lv-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-12" value="Show A Tow Section Form:&lt;br&gt;1. Gym Information. 2. User Information." style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="578" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-14" target="J2T7ZsKiyUCOiQZrp5Lv-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-14" value="The Submit&amp;nbsp;Button Pressed" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="195" y="652" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-18" target="J2T7ZsKiyUCOiQZrp5Lv-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-29" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="J2T7ZsKiyUCOiQZrp5Lv-27">
+          <mxGeometry x="-0.4109" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-18" target="J2T7ZsKiyUCOiQZrp5Lv-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-32" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="J2T7ZsKiyUCOiQZrp5Lv-31">
+          <mxGeometry x="-0.3994" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-18" value="Is The Form Valid?" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="710" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-24" target="J2T7ZsKiyUCOiQZrp5Lv-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-24" value="Try To Create An Account With A Gym Owner Role" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="850" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-30" value="Show Validation Error Message" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="850" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-34" target="J2T7ZsKiyUCOiQZrp5Lv-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-38" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="J2T7ZsKiyUCOiQZrp5Lv-37">
+          <mxGeometry x="-0.0476" y="-1" relative="1" as="geometry">
+            <mxPoint x="-16" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="J2T7ZsKiyUCOiQZrp5Lv-34" target="J2T7ZsKiyUCOiQZrp5Lv-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-41" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="J2T7ZsKiyUCOiQZrp5Lv-40">
+          <mxGeometry x="-0.1389" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-34" value="Is The Creation Successfuly done" style="rhombus;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="940" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-36" value="Send The User To The Proper Page" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="1030" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-39" value="Show The Error Message" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="1030" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-42" value="Vague" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="J2T7ZsKiyUCOiQZrp5Lv-43" value="In The System Admin Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a0522d;fontColor=#ffffff;strokeColor=#6D1F00;" vertex="1" parent="1">
+          <mxGeometry x="120" y="80" width="200" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
