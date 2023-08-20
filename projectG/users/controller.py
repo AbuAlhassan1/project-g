@@ -40,13 +40,9 @@ def create_user(request, payload: CreateUserInput):
     
     
     if user.has_perm("users.can_create_user"):
-        
-        if payload.permissions != None:
-            try: permissions: list = Permission.objects.filter(id__in=payload.permissions)
-            except Exception as e: return 500, {"message": f"code: 1, error: {str(e)}"}
 
-        if payload.groups_ids != None:
-            try: groups: list = Group.objects.filter(id__in=payload.groups_ids)
+        if payload.group != None:
+            try: group = Group.objects.get(name=payload.group)
             except Exception as e: return 500, {"message": f"code: 2, error: {str(e)}"}
         
         try:
@@ -55,19 +51,13 @@ def create_user(request, payload: CreateUserInput):
                 username = payload.username,
                 email = payload.email,
                 age = payload.age,
+                phone = payload.phone,
                 password = payload.password
             )
         except Exception as e: return 500, {'message': f"code: 3 => error: {e}"}
-        
-        
-        if payload.permissions != None:
-            try: newUser.user_permissions.add(*permissions)
-            except Exception as e:
-                newUser.delete()
-                return 500, {'message': f"code: 4 => error: {e}"}
             
-        if payload.groups_ids != None:
-            try: newUser.groups.add(*groups)
+        if payload.group:
+            try: newUser.groups.add(group)
             except Exception as e:
                 newUser.delete()
                 return 500, {'message': f"code: 5 => error: {e}"}
@@ -87,20 +77,17 @@ def create_user(request, payload: CreateUserInput):
     401: MessageOut,
 })
 def signin(request, payload: SigninSchema):
-    if not payload.username:
-        return 400, {'message': "Username field required!"}
-    elif not payload.password:
-        return 400, {'message': "Password field required!"}
-    elif not payload.username and not payload.password:
-        return 400, {'message': "Username and Password fields are required!"}
+    if not payload.username: return 400, {'message': "Username field required!"}
+    elif not payload.password: return 400, {'message': "Password field required!"}
+    elif not payload.username and not payload.password: return 400, {'message': "Username and Password fields are required!"}
     
-    try:
-        user: CUser = authenticate(username=payload.username, password=payload.password)
-    except Exception as e:
-        return 500, {'message': f"زرب الكود -_- | رقم الزربة 1 {e}"}
+    try: user: CUser = authenticate(username=payload.username, password=payload.password)
+    except Exception as e: return 500, {'message': f"زرب الكود -_- | رقم الزربة 1 {e}"}
     
-    if not user:
-        return 401, {'message': "Wrong username or password!"}
+    if not user: return 401, {'message': "Wrong username or password!"}
+    
+    try: group = user.groups.all()
+    except Exception as e: 500, {"message": str(e)}
 
     # Everything Just Fine [ generate token & refresh token and return the response. ] ...
     token = get_user_token(user)
@@ -109,12 +96,11 @@ def signin(request, payload: SigninSchema):
     try:
         return 200, {
             "id": str(user.id),
-            "role": str(user),
+            "role": str(list(group)[0]),
             "access_token": str(token['access']),
             "refresh_token": str(refresh_token['refresh'])
         }
-    except Exception as e:
-        return 500, {'message': str(e)}
+    except Exception as e: return 500, {'message': str(e)}
 
 # -------------------------------
 

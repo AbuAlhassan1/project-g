@@ -8,8 +8,7 @@ class CreateUserInput (Schema):
     email: str = None
     password: str
     phone: int
-    groups_ids: list[int] = None
-    permissions: list[int] = None
+    group: str
     
 class UserOutput (Schema):
     id: str
