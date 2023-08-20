@@ -4,13 +4,13 @@ import uuid
 from gym.models import Gym
 
 class CUserManager(UserManager):
-    def create_user(self, full_name, username, email, age, password):
-
+    def create_user(self, full_name, phone, username, email, age, password):
         if not email: raise ValueError("Users must have an email address")
         
         user = self.model()
         user.full_name = full_name
         user.username = username
+        user.phone = phone
         user.email = self.normalize_email(email)
         user.set_password(password)
         user.age = age
@@ -24,7 +24,7 @@ class CUser(AbstractUser):
     full_name = models.CharField(max_length=100)
     age = models.IntegerField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
-    phone = models.IntegerField(blank=True, null=True)
+    phone = models.IntegerField(blank=True, null=False)
     gym = models.ForeignKey(Gym, null = True, on_delete = models.DO_NOTHING)
 
     objects = CUserManager()
@@ -37,5 +37,4 @@ class CUser(AbstractUser):
             ("can_approve_subscriber", "Can approve newly added subscriber."),
         ]
 
-    def __str__(self):
-        return f"{self.username} | {self.full_name} | {self.id}"
+    def __str__(self): return f"{self.username} | {self.full_name} | {self.id}"
